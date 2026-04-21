@@ -332,3 +332,96 @@ If user says "fix":
 - fix only the current section
 - do not rewrite everything
 - do not touch other sections
+
+# Pixel Perfect Production Mode
+
+When the task is design-based frontend implementation, apply this mode.
+
+## Workflow
+1. Inspect `src/assets/design/` first
+2. Detect available design sources
+3. Analyze the full page before coding
+4. Split page into exact visual blocks
+5. Create/update implementation notes in `docs/ai-workflow/`
+6. Implement ONE block only
+7. Run/confirm preview state
+8. STOP
+
+## Hard rules
+- No approximation
+- No visual interpretation
+- No redesign
+- No simplification
+- No placeholder assets unless explicitly approved
+- No multi-block generation
+- No silent edits to approved blocks
+- No random breakpoint invention
+
+## Breakpoints
+Use only these project breakpoints when relevant:
+1440, 1310, 1199, 1024, 767, 660, 580, 490, 390, 370
+
+Main responsive split:
+- desktop >= 1025
+- mobile/tablet <= 1024
+
+Minimum viewport:
+- 320px
+
+Container side paddings:
+- desktop 50px
+- mobile/tablet 10px
+- very small mobile 5px
+
+## Notes discipline
+Before implementation, AI must create/update a note file in `docs/ai-workflow/` that tracks:
+- page name
+- block order
+- current block
+- assets
+- responsive assumptions
+- approval state
+
+## Continuation rule
+Only continue after explicit user command:
+- approved
+- continue
+
+## Fix mode
+If user says fix:
+- fix only the current block
+- preserve page structure
+- do not rewrite the entire page
+- do not touch unrelated sections
+
+# Data Attribute Hook Mode
+
+For JS-enabled UI:
+- prefer `data-*` hooks by default
+- keep JS selectors separate from CSS classes
+- use stable readable hook names
+- avoid coupling JS to presentational classes when possible
+
+# Design Analysis Mode
+
+When working with design-based tasks:
+
+## Required behavior
+
+1. Inspect `src/assets/design/`
+2. Analyze full page before coding
+3. Create structured plan
+4. Create/update notes in `docs/ai-workflow/`
+5. STOP
+
+## Forbidden behavior
+
+- No HTML generation before analysis
+- No SCSS generation before analysis
+- No section creation before analysis
+- No guessing layout structure
+
+## Continuation
+
+Only after analysis is approved:
+- proceed to block implementation mode

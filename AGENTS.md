@@ -26,6 +26,7 @@ Do not redesign, reinterpret, or expand the architecture unless explicitly reque
 - src/svg — svg files and sprite sources
 - src/fonts — fonts
 - src/favicon — favicon source files
+- src/assets/design — design sources and exports for implementation (see Pixel-Perfect Design Execution Standard)
 - dist is build output and must never be edited manually
 
 ## Hard restrictions
@@ -311,3 +312,233 @@ If a block is not pixel-perfect:
 - fix ONLY that block
 - do not change page structure
 - do not modify other sections
+
+## Pixel-Perfect Design Execution Standard
+
+### Purpose
+This starter must support strict pixel-perfect implementation from design files.
+The design source is the only visual source of truth.
+Starter remains only a technical base:
+- project structure
+- includes
+- build system
+- architecture
+
+### Design source priority
+Use this priority:
+1. Connected Figma source
+2. Exported design files inside project design folder
+3. PNG export
+4. PDF export
+
+If a raw Figma source file is not technically accessible in the current environment, use exported PNG/PDF assets from the design folder as the implementation reference.
+
+### Design folder rule
+All design materials for implementation must be stored inside:
+`src/assets/design/`
+
+Recommended structure:
+```
+src/assets/design/
+  page-name/
+    original/
+    exports/
+    images/
+    icons/
+    notes/
+```
+
+Rules:
+- `original` = raw provided design files
+- `exports` = png/pdf/jpg exported screens
+- `images` = extracted raster assets
+- `icons` = svg/icon assets
+- `notes` = implementation notes related to that page
+
+AI must inspect this folder before starting design-based work.
+
+### Mandatory design-first workflow
+For any real page implementation from a design:
+1. Inspect available design files in `src/assets/design/`
+2. Analyze the full page before coding
+3. Split the page into exact visual blocks
+4. Write a structured implementation plan
+5. Implement only one block at a time
+6. Validate preview after that block
+7. Stop and wait for approval
+8. Continue only after approval
+
+### Internal implementation notes rule
+Before implementing a design-based page, AI must create or update a working note file in:
+`docs/ai-workflow/`
+
+This note must contain:
+- page name
+- detected design sources
+- block list in top-to-bottom order
+- asset list
+- typography notes
+- spacing/container notes
+- responsive notes
+- current implementation status per block
+
+Purpose:
+AI must keep a persistent self-check plan so it does not lose structure during long tasks.
+
+### Exact visual fidelity rule
+AI must reproduce exactly:
+- section order
+- layout
+- spacing
+- dimensions
+- proportions
+- typography
+- visual hierarchy
+- alignments
+- real assets
+- breakpoint behavior visible in the design
+
+AI must not:
+- simplify composition
+- visually reinterpret
+- improve design on its own
+- normalize spacing “for consistency”
+- replace real assets with placeholders unless explicitly allowed
+
+### Container and page padding rule
+Default container side paddings:
+- desktop: 50px
+- mobile/tablet: 10px
+- very small mobile: 5px
+
+Minimum supported viewport width:
+- 320px
+
+Main responsive split:
+- Desktop: >= 1025px
+- Mobile/Tablet: <= 1024px
+
+### Breakpoint rule
+Use these project breakpoints:
+- 1440
+- 1310
+- 1199
+- 1024
+- 767
+- 660
+- 580
+- 490
+- 390
+- 370
+
+Main layout switch:
+- desktop >= 1025
+- mobile/tablet <= 1024
+
+Rules:
+- do not invent random breakpoints
+- do not remove listed breakpoints
+- use only the breakpoints relevant to the current design
+- do not force all breakpoints into every block if unnecessary
+
+### Block isolation rule
+While implementing one block:
+- do not modify other blocks
+- do not touch approved blocks
+- do not refactor unrelated files
+- do not batch multiple sections in one step
+
+### Approval-stop rule
+After each block:
+AI must:
+1. report changed files
+2. confirm preview/build status
+3. summarize what was implemented
+4. stop
+
+AI must wait for:
+- approved
+- continue
+- fix this block
+
+### Correction rule
+If the user requests a correction:
+- fix only the current block
+- preserve all correct parts
+- do not rewrite the whole page
+- do not touch unrelated sections
+
+## Frontend Interaction and JS Hook Standard
+
+### Data-attribute rule
+For JS behavior, prefer `data-*` attributes as the default hook system.
+
+Examples:
+- `data-modal`
+- `data-modal-open`
+- `data-modal-close`
+- `data-tabs`
+- `data-tab`
+- `data-tab-panel`
+- `data-accordion`
+- `data-accordion-button`
+- `data-accordion-panel`
+- `data-slider`
+- `data-fancybox`
+- `data-mask`
+
+Rules:
+- do not use presentational CSS classes as the primary JS selector when a `data-*` hook is more appropriate
+- keep JS hooks separate from styling classes
+- keep hooks stable and readable
+- use semantic and task-specific `data-*` names
+
+### Design-driven interaction rule
+If interaction states are not visible in the design:
+- do not invent complex behavior
+- implement only the minimal technical behavior required by the task
+- preserve visual consistency with the shown design states
+
+## Design Analysis First Rule
+
+Before implementing any page from design:
+
+AI MUST:
+
+1. Inspect design sources in:
+   `src/assets/design/`
+
+2. Identify:
+   - available screens (desktop/mobile/tablet)
+   - page type
+   - main layout structure
+
+3. Build a structured plan:
+   - full list of sections (top to bottom)
+   - section hierarchy
+   - reusable components
+   - assets per section
+
+4. Create or update a design analysis file in:
+   `docs/ai-workflow/`
+
+This file must include:
+- page name
+- design sources used
+- section list (ordered)
+- asset list
+- typography notes
+- spacing notes
+- responsive behavior notes
+- unknown/missing states
+- planned implementation order
+
+5. STOP
+
+AI must NOT:
+- write HTML
+- write SCSS
+- create components
+- create sections
+
+until analysis is complete.
