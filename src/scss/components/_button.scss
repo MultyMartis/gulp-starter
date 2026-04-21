@@ -1,0 +1,17 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid #8aa1ff;
+    background: transparent;
+    color: #e6e9ef;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: #8aa1ff;
+    color: #0f1115;
+}

@@ -1,0 +1,18 @@
+@@include("partials/layout/head.html", {"title": "About | Gulp Starter"})
+<body>
+    @@include("partials/layout/header.html")
+
+    <main>
+        @@include("partials/components/breadcrumb.html")
+
+        @@include("partials/sections/hero.html", {"title": "About this starter", "text": "Simple structure with pages, partials, sections, components, SCSS modules and basic JS.", "buttonText": "Contact Us", "buttonTarget": "demo-modal"})
+
+        @@include("partials/sections/advantages.html")
+        @@include("partials/sections/contacts.html")
+    </main>
+
+    @@include("partials/layout/footer.html")
+    @@include("partials/components/modal.html", {"id": "demo-modal", "title": "About Page Modal", "text": "You can reuse the same modal component on every page."})
+    @@include("partials/layout/scripts.html")
+</body>
+</html>

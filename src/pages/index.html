@@ -1,9 +1,18 @@
-@@include('partials/head.html', { "title": "Starter Gulp" })
-
+@@include("partials/layout/head.html", {"title": "Home | Gulp Starter"})
 <body>
-    @@include('partials/layout/header.html')
-    @@include('partials/sections/hero.html')
+    @@include("partials/layout/header.html")
 
-    <script src="assets/js/main.js"></script>
+    <main>
+        @@include("partials/components/breadcrumb.html")
+
+        @@include("partials/sections/hero.html", {"title": "Gulp HTML/CSS/JS Starter", "text": "Production-ready starter for static layout, WordPress themes, and OpenCart templates.", "buttonText": "Open Modal", "buttonTarget": "demo-modal"})
+
+        @@include("partials/sections/advantages.html")
+        @@include("partials/sections/contacts.html")
+    </main>
+
+    @@include("partials/layout/footer.html")
+    @@include("partials/components/modal.html", {"id": "demo-modal", "title": "Demo Modal", "text": "This modal is controlled by main.js."})
+    @@include("partials/layout/scripts.html")
 </body>
 </html>

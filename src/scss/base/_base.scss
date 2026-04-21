@@ -1,8 +1,17 @@
+:root {
+    color-scheme: dark;
+}
+
 body {
-    background: #111;
-    color: #fff;
+    margin: 0;
+    background: #0f1115;
+    color: #e6e9ef;
     font-family: Arial, sans-serif;
-    line-height: 1.4;
+    line-height: 1.5;
+}
+
+main {
+    display: block;
 }
 
 .container {
@@ -10,4 +19,9 @@ body {
     max-width: 1230px;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+.section-title {
+    margin: 0 0 20px;
+    font-size: 32px;
 }

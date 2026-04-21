@@ -1,9 +1,7 @@
 <section class="hero">
     <div class="container">
-        <div class="hero__content">
-            <h1 class="hero__title">ШАББЛОН ДЛЯ GULP</h1>
-            <p class="hero__text">Основа под вёрстку готова. Можно собирать страницы через @@include.</p>
-            <a class="hero__btn" href="#">Кнопка</a>
-        </div>
+        <h1 class="hero__title">@@title</h1>
+        <p class="hero__text">@@text</p>
+        @@include("partials/components/button.html", {"text": "@@buttonText", "type": "button", "variant": "primary", "extraClass": "hero__button", "modalTarget": "@@buttonTarget", "attrs": ""})
     </div>
 </section>

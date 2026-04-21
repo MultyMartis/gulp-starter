@@ -1,0 +1,18 @@
+@@include("partials/layout/head.html", {"title": "Service | Gulp Starter"})
+<body>
+    @@include("partials/layout/header.html")
+
+    <main>
+        @@include("partials/components/breadcrumb.html")
+
+        @@include("partials/sections/hero.html", {"title": "Services", "text": "Starter-friendly section blocks you can quickly adapt for client projects.", "buttonText": "Request Service", "buttonTarget": "demo-modal"})
+
+        @@include("partials/sections/advantages.html")
+        @@include("partials/sections/contacts.html")
+    </main>
+
+    @@include("partials/layout/footer.html")
+    @@include("partials/components/modal.html", {"id": "demo-modal", "title": "Service Request", "text": "Use this modal as a basic request dialog."})
+    @@include("partials/layout/scripts.html")
+</body>
+</html>

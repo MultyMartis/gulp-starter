@@ -1,0 +1,13 @@
+.breadcrumb {
+    padding: 16px 0;
+}
+
+.breadcrumb__list {
+    display: flex;
+    gap: 8px;
+}
+
+.breadcrumb__item {
+    font-size: 14px;
+    opacity: 0.8;
+}
