@@ -1,12 +1,35 @@
 # AGENTS.md
 
+## Repository kind (read first)
+
+Gulp-starter supports two repository types:
+
+1. **Canonical gulp-starter template** — the upstream template repository. It exists to be copied; it keeps generic demo content and is not a client delivery.
+2. **Copied real project** — a repository created from the starter for a specific client or product. It holds real design materials, real content, and production implementation.
+
+**This repository is a copied real project.** It is not the canonical starter template repository.
+
+Unless a rule explicitly says “canonical template only,” the **copied real project** assumptions below apply here.
+
 ## Project role
-This repository is the canonical gulp starter template for static HTML projects.
-It is not a client website.
+
+**In this copied real project:**
+
+- Real design files under `src/assets/design/` are expected for design-driven work.
+- Real business/client pages, copy, SEO/service pages, and landings are allowed when the task requests them.
+- **Pixel-perfect and design-execution rules apply in full** (see Pixel-Perfect Frontend Workflow and Pixel-Perfect Design Execution Standard).
+- For **visual work**, **design execution rules take priority** over starter demo styling, default colors/spacing from examples, and “generic reusable” presentation choices.
+
+**In the canonical template repository only** (not this repo’s role):
+
+- The repo is the reusable starter, not a client website.
+- Keep demo pages generic; do not ship real client production sites from the template repo unless explicitly requested.
 
 ## Core rule
-Preserve the starter architecture.
-Do not redesign, reinterpret, or expand the architecture unless explicitly requested.
+Preserve the gulp-starter **architecture** (folders, layers, build pipeline, include patterns).
+Do not redesign or expand the **architecture** unless explicitly requested.
+
+**Scope note:** “Preserve architecture” does **not** mean preserving starter **visual** defaults. In design-based tasks, visual output must follow the **design source**, not leftover starter appearance.
 
 ## Project structure
 - src/pages — only final ready-to-build pages
@@ -40,22 +63,26 @@ Do not redesign, reinterpret, or expand the architecture unless explicitly reque
 - Do not create JS unless the task really requires JS
 - Do not refactor unrelated files
 - Do not modify unrelated pages or sections
-- Do not generate real client pages inside the starter template unless explicitly requested
-- Starter is a template, not a real client project
+- **Canonical template only:** do not generate real client production pages unless explicitly requested.
+- **This copied real project:** real client pages and implementation are allowed when the task requests them.
 
 ## Starter vs real project rule
-Inside gulp-starter:
-- keep pages generic
-- keep content reusable
-- do not create real SEO/business/service pages
-- do not turn starter pages into client pages
+**Canonical gulp-starter template:**
 
-Inside a copied real project:
-- real business content is allowed
-- internal service pages and landing pages may be created as requested
+- Keep pages generic; keep demo content reusable.
+- Do not create real SEO/business/service pages unless explicitly requested.
+- Do not turn template demo pages into a client website inside the template repo.
+
+**Copied real project (this repository):**
+
+- Real business content is allowed and expected when tasks require it.
+- Internal service pages, SEO pages, and landing pages may be created as requested.
+- Real design files and pixel-perfect implementation against those sources are normal workflow, not an exception.
 
 ## Workflow rule
-All multi-file operations must be executed as one coherent Codex task.
+All multi-file operations must be executed as one coherent Codex task (single agent run for the **current step**).
+**Design implementation exception:** “one coherent task” still means **at most one new visual block** per coding delivery; do not use this bullet to justify multi-block batching. Block-by-block and approval rules override a broad interpretation of “one task.”
+
 Do not suggest manual step-by-step editing by default for:
 - project structure
 - page generation
@@ -75,7 +102,7 @@ Default workflow:
 - Use semantic HTML
 - Keep markup clean and production-ready
 - Avoid meaningless wrapper nesting
-- Avoid placeholder/fake/demo content unless explicitly requested
+- **Copy and content:** avoid fake demo filler (lorem ipsum, meaningless marketing fluff) unless the task explicitly allows temporary copy. This is unrelated to **visual assets** — see Pixel-Perfect rules: **no image/icon/logo placeholders** in design-based implementation unless explicitly approved.
 - Internal pages must not use hero unless explicitly requested
 - Homepage and special landing pages may use hero
 - Internal page default structure:
@@ -207,26 +234,30 @@ After changes:
    - a short concrete list of remaining errors
 
 ## Priority order
-When in doubt:
-1. preserve architecture
-2. avoid touching starter template content unnecessarily
-3. reuse existing project patterns
-4. keep output minimal, clean, and build-safe
-5. add libraries only when required
-6. keep head/meta/favicon complete for real pages
-7. do not make broad assumptions beyond the task
+When in doubt (general tasks):
+
+1. Preserve architecture (structure, layers, build safety).
+2. Reuse existing project patterns.
+3. Keep output minimal, clean, and build-safe.
+4. Add libraries only when required.
+5. Keep head/meta/favicon complete for real pages.
+6. Do not make broad assumptions beyond the task.
+
+**Canonical template only:** avoid turning generic demo content into client-specific pages unless requested.
+
+**Design-based implementation in a copied real project:** if anything above conflicts with **design source fidelity** or the **mandatory pixel-perfect workflow** (analysis first, one block, approvals), **design execution wins for visuals**. See **Execution priority (design-based work)** at the end of this file.
 
 ## Pixel-Perfect Frontend Workflow
 
 ### Source of truth
 Design source is the only visual source of truth.
-Starter template is only a technical base:
+The gulp-starter codebase is only a technical base:
 - structure
 - includes
 - build system
 - architecture
 
-AI must not reinterpret, simplify, restyle, or approximate a design.
+AI must not reinterpret, simplify, restyle, or approximate a design. **In a copied real project,** this applies to all client-facing design implementation work.
 
 ### Priority of design sources
 1. Figma (preferred)
@@ -316,9 +347,9 @@ If a block is not pixel-perfect:
 ## Pixel-Perfect Design Execution Standard
 
 ### Purpose
-This starter must support strict pixel-perfect implementation from design files.
+Projects using this workflow must support strict pixel-perfect implementation from design files.
 The design source is the only visual source of truth.
-Starter remains only a technical base:
+The gulp-starter layout (partials, SCSS layers, Gulp pipeline) remains only a technical base:
 - project structure
 - includes
 - build system
@@ -542,3 +573,44 @@ AI must NOT:
 - create sections
 
 until analysis is complete.
+
+---
+
+## Rule precedence (non-design vs design)
+
+- **Always:** architecture preservation, folder structure, `dist` safety, valid includes, and successful `npm run build` after changes (unless the task says otherwise).
+- **Design-based visual work:** sections **Pixel-Perfect Frontend Workflow**, **Pixel-Perfect Design Execution Standard**, and **Design Analysis First Rule** override generic “starter look,” convenience shortcuts, and any weaker workflow wording elsewhere in this file.
+- **Conflict resolution:** if a bullet suggests placeholders, approximation, multi-block delivery, or skipping analysis/approval, treat it as **invalid for design implementation** unless it explicitly defers to this pixel-perfect section.
+
+---
+
+## Execution priority (design-based work)
+
+For **design-based frontend implementation** in a **copied real project**, execution priority is:
+
+1. **Design source fidelity** (layout, spacing, type, assets, hierarchy, stated breakpoints).
+2. **Approved workflow steps** (full analysis → `docs/ai-workflow/` plan → **one block** → preview/build report → **STOP** → user approval or “fix this block”).
+3. **Architecture preservation** (partials/sections/components/layers, no manual `dist` edits).
+4. **Build safety** (valid includes/SCSS imports; fix build errors).
+
+**Not** valid priorities for design visuals:
+
+- Convenience or speed over fidelity
+- Simplification or “cleaning up” the design
+- Starter default colors, spacing, or demo components as a stand-in for the design
+- Placeholder images/icons/logos/decorative assets **unless explicitly approved**
+
+---
+
+## Agent behavior mode (real design tasks)
+
+For **real design implementation** tasks, the agent must behave as an **execution system**, not a generic advisor.
+
+That means:
+
+- Perform **only** the required phase (e.g. analysis-only until analysis is approved; **one** implementation block per step).
+- Do **not** expand scope beyond the task or the current block.
+- Do **not** propose alternative creative directions, frameworks, or redesigns unless the user explicitly asks for options.
+- Do **not** skip design analysis or `docs/ai-workflow/` documentation before code.
+- Do **not** skip approval checkpoints (stop after each block; wait for **approved** / **continue** / **fix this block**).
+- Do **not** pad responses with generic explanatory filler; report what changed, build/preview status, and what is blocked on user input.

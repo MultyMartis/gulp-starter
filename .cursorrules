@@ -1,6 +1,13 @@
-You are working inside the main gulp-starter template project.
-Treat this repository as a reusable starter, not as a client website.
-This starter targets static HTML projects only: multipage sites, landing pages, and internal pages without CMS, PHP, or database.
+You are working in a **gulp-starter–based static HTML** project (multipage sites, landing pages, internal pages; no CMS, PHP, or database in the starter model).
+
+**Repository kinds:**
+
+1. **Canonical gulp-starter template** — upstream reusable template; generic demo content.
+2. **Copied real project** — client/product repo with real design files and real implementation.
+
+**This repository is a copied real project.** Real design materials, business pages, and pixel-perfect implementation are expected here. Do not treat this repo as “template demo only.”
+
+**Visual work:** Design execution rules (pixel-perfect sections below) **override** starter default visuals, generic spacing/colors, and reuse of demo components **when they conflict with the design source**.
 
 ## Core Architecture (Fixed)
 Keep this structure unchanged unless explicitly requested:
@@ -29,23 +36,25 @@ Keep this structure unchanged unless explicitly requested:
 - Never move files between architecture layers unless explicitly requested
 - Never create unnecessary files
 - Never modify unrelated files
-- Never generate real client pages in this starter unless explicitly requested
-- Keep starter content generic and reusable
+- **Canonical template only:** never generate real client production pages unless explicitly requested; keep demo content generic.
+- **This copied real project:** real client pages and implementation are allowed when the task requests them.
 - Never add CMS logic
 - Never add PHP templates or PHP routing
 - Never add backend/database assumptions
 
 ## Starter Template vs Real Project
-Inside gulp-starter template:
+**Canonical gulp-starter template:**
+
 - Do not create business-specific service pages by default
 - Do not inject fake SEO-heavy client text
-- Do not turn starter pages into a real company website
+- Do not turn template demo pages into a client website inside the template repo
 - Keep examples suitable for static HTML only
 
-Inside a copied real project:
-- Real business pages/content are allowed
+**Copied real project (this repository):**
+
+- Real business pages/content are allowed and expected when tasks require them
 - SEO/service/landing pages are allowed when requested
-- Client-specific adaptation is allowed
+- Client-specific adaptation and **pixel-perfect implementation from `src/assets/design/`** are normal workflow
 
 ## Cursor/Codex Workflow Principle
 All multi-file operations must be executed via Cursor/Codex agent prompts, not manual step-by-step editing by default.
@@ -62,8 +71,9 @@ Default execution order:
 - Keep only build-ready pages in src/pages
 - One page must contain one clear H1
 - Use semantic HTML and practical structure
-- Avoid meaningless wrappers and placeholder fluff
-- Keep starter pages neutral and reusable
+- Avoid meaningless wrappers and **copy** placeholder fluff (lorem, fake marketing filler) unless the task allows it
+- **Canonical template only:** keep demo pages neutral and reusable
+- **Design-based tasks:** follow pixel-perfect rules — **no visual asset placeholders** (images/icons/logos/decorative art) unless explicitly approved; see **Pixel Perfect Production Mode** (authoritative)
 
 ## Layout Rules
 - Put shared document/head/header/footer/scripts logic only in src/partials/layout
@@ -153,7 +163,7 @@ Base head for production-ready static pages should support:
 
 Restrictions:
 - No fake verification tags
-- No fake production URLs/images unless explicitly requested placeholders
+- **Meta/social:** do not invent production URLs or og:image URLs; use real or task-approved values. Requesting explicit meta placeholders is **not** permission to use **visual** placeholders in layout (see pixel-perfect rules).
 - Keep meta setup practical, minimal, and reusable
 
 Favicon:
@@ -194,31 +204,34 @@ After making changes:
   - data-mask="phone"
 - JS must remain resilient to HTML/CSS restyling
 
-# Cursor Rules — Visual Fidelity Mode (PDF → HTML)
+# Cursor Rules — Visual Fidelity Mode (design → HTML)
+
+**Authority:** If anything in this section conflicts with **Pixel Perfect Production Mode** or **Design Analysis Mode** below, the pixel-perfect / design-analysis sections **win**. No image/icon/logo placeholders during design implementation unless **explicitly approved**.
 
 ## 1. Source of Truth
 
-- PRIMARY source: design file (PDF / Figma / image)
-- Starter = ONLY technical base (structure, includes, build)
-- Visual decisions MUST come from design, not from starter
+- PRIMARY source: design file (Figma preferred, else PNG/PDF/image exports in `src/assets/design/`)
+- Gulp-starter = ONLY technical base (structure, includes, build)
+- Visual decisions MUST come from design, not from starter demos
 
 ---
 
 ## 2. Forbidden
 
 DO NOT:
-- use default starter colors
-- use generic spacing
-- reuse starter components visually
-- simplify layout
+- use default starter colors/spacing as a substitute for the design
+- use generic spacing instead of measured design spacing
+- reuse starter demo components **visually** when they do not match the design
+- simplify layout or structure relative to the design
+- approximate or “eyeball” fidelity
 - invent UI not present in design
-- keep dark/light theme if it differs from design
+- keep an existing theme or palette if it differs from the design
 
 ---
 
 ## 3. Mandatory Visual Rules
 
-ALWAYS implement:
+ALWAYS implement (from design):
 
 - real color palette from design
 - correct spacing (section padding, gaps, margins)
@@ -227,20 +240,22 @@ ALWAYS implement:
 - card layouts
 - grid structure
 - visual grouping of blocks
+- **real raster/SVG assets** (or accurate recreations), not stand-in placeholders
 
 ---
 
 ## 4. Workflow (STRICT)
 
-For any page generation:
+For design-based page work:
 
-1. Analyze design
-2. Define sections
-3. Build HTML structure
-4. Build SCSS based on design
-5. Insert placeholders for images
-6. Match layout visually
-7. Run build
+1. Inspect `src/assets/design/` and complete **Design Analysis Mode** (plan + `docs/ai-workflow/`) — **no HTML/SCSS until approved step**
+2. Split the page into exact visual blocks (top to bottom)
+3. Implement **exactly one block**, with real assets for that block
+4. Match layout visually to the design source for that block
+5. Run build / confirm preview
+6. **STOP** — wait for **approved** / **continue** / **fix this block**
+
+Do **not** batch multiple blocks in one step. Do **not** use visual placeholders instead of real assets unless explicitly approved.
 
 ---
 
@@ -287,15 +302,14 @@ After any task:
 
 ## 9. Quality Check (CRITICAL)
 
-Before finishing, ensure:
+Before finishing a design-based step, ensure:
 
-- visual match with design is HIGH
-- no starter-style leftovers
-- no broken layout
-- no duplicated sections
-- clean structure
+- the implemented block(s) match the **design source** for those blocks (not “close enough”)
+- no starter **demo** styling left where it conflicts with the design
+- no broken layout; no duplicated sections
+- clean structure within architecture rules
 
-If mismatch → rework before finishing
+If mismatch → rework before finishing. **Do not** substitute placeholders for final visuals unless explicitly approved.
 
 # Pixel Perfect Mode
 
@@ -425,3 +439,35 @@ When working with design-based tasks:
 
 Only after analysis is approved:
 - proceed to block implementation mode
+
+---
+
+# Execution priority (design-based work)
+
+For **design-based frontend implementation** in a **copied real project**, priority is:
+
+1. **Design source fidelity**
+2. **Approved workflow steps** (analysis → notes → one block → stop → approval)
+3. **Architecture preservation** (fixed folders/layers; no manual `dist` edits)
+4. **Build safety**
+
+**Not** valid drivers: convenience, simplification, starter defaults, or visual placeholder substitution (unless explicitly approved).
+
+---
+
+# Agent behavior mode (real design tasks)
+
+Behave as an **execution system**, not a generic advisor:
+
+- Do only the required phase; one block per implementation step after analysis.
+- Do not expand scope or suggest alternative directions unless the user asks.
+- Do not skip analysis, `docs/ai-workflow/`, or approval checkpoints.
+- Do not pad output with generic explanatory filler; report changes, build/preview status, and blocking user inputs.
+
+---
+
+# Rule precedence (this file)
+
+1. **Design Analysis Mode** and **Pixel Perfect Production Mode** override conflicting bullets elsewhere in this file (including older “Visual Fidelity” steps if any fragment remains misaligned).
+2. **Architecture** (Core Architecture, layers, `dist`) always applies unless an explicit project decision changes it.
+3. For visuals: **no approximation, no multi-block steps, no unapproved placeholders**.
