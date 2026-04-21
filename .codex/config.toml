@@ -1,0 +1,118 @@
+# Codex project configuration for gulp-starter
+
+sandbox_mode = "danger-full-access"
+[project]
+name = "gulp-starter"
+description = "Static HTML starter with Gulp, SCSS, modular JS, and strict architecture rules"
+
+[execution]
+# Allow Codex to work inside project files
+sandbox = "workspace-write"
+
+# Ask before dangerous actions (удаление, git force и т.д.)
+approval_policy = "on-request"
+
+# Default shell
+shell = "powershell"
+
+[workflow]
+# Always validate build after changes
+post_tasks = [
+  "npm run build"
+]
+
+# Preferred task flow
+task_format = [
+  "analyze",
+  "apply_changes",
+  "report",
+  "validate"
+]
+
+[git]
+# Branch prefix for Codex work
+branch_prefix = "codex/"
+
+# Default commit style
+commit_message_style = "short"
+
+# Use draft PRs if applicable
+draft_pr = true
+
+[js]
+# Enforce modular structure
+entry = "src/js/main.js"
+modules_dir = "src/js/modules"
+
+# Disallow global registry patterns
+no_global_registry = true
+
+# Require explicit imports
+explicit_imports = true
+
+# Prefer data attributes
+data_hooks = true
+
+[libraries]
+# Default strategy
+source = "cdn"
+
+# Supported libraries
+allowed = [
+  "swiper",
+  "fancybox",
+  "inputmask"
+]
+
+# Rules
+no_inline_scripts = true
+modules_only = true
+
+[html]
+# SEO rules
+one_h1_per_page = true
+semantic_required = true
+
+# Page patterns
+internal_page_structure = [
+  "breadcrumb",
+  "page-intro",
+  "content"
+]
+
+homepage_structure = [
+  "hero",
+  "sections"
+]
+
+[scss]
+# Structure rules
+mirror_html_structure = true
+
+# Entry point
+entry = "src/scss/style.scss"
+
+# Disallow duplicate imports
+no_duplicates = true
+
+[naming]
+# Enforce naming
+case = "kebab-case"
+lowercase_only = true
+
+[restrictions]
+# Critical protections
+no_edit_dist = true
+no_architecture_changes = true
+no_unnecessary_files = true
+no_cms_logic = true
+
+[starter]
+# Special rule for template
+is_template = true
+
+# Prevent AI from generating real business pages inside starter
+no_real_content = true
+
+[workspace]
+skip_dependencies_check = true

@@ -193,3 +193,142 @@ After making changes:
   - data-fancybox
   - data-mask="phone"
 - JS must remain resilient to HTML/CSS restyling
+
+# Cursor Rules — Visual Fidelity Mode (PDF → HTML)
+
+## 1. Source of Truth
+
+- PRIMARY source: design file (PDF / Figma / image)
+- Starter = ONLY technical base (structure, includes, build)
+- Visual decisions MUST come from design, not from starter
+
+---
+
+## 2. Forbidden
+
+DO NOT:
+- use default starter colors
+- use generic spacing
+- reuse starter components visually
+- simplify layout
+- invent UI not present in design
+- keep dark/light theme if it differs from design
+
+---
+
+## 3. Mandatory Visual Rules
+
+ALWAYS implement:
+
+- real color palette from design
+- correct spacing (section padding, gaps, margins)
+- typography scale (h1–h4, body, small text)
+- button styles (size, radius, hierarchy)
+- card layouts
+- grid structure
+- visual grouping of blocks
+
+---
+
+## 4. Workflow (STRICT)
+
+For any page generation:
+
+1. Analyze design
+2. Define sections
+3. Build HTML structure
+4. Build SCSS based on design
+5. Insert placeholders for images
+6. Match layout visually
+7. Run build
+
+---
+
+## 5. Project Architecture Rules
+
+- Work ONLY inside src/
+- pages = final pages only
+- partials/layout = head, header, footer
+- partials/sections = sections
+- partials/components = reusable elements
+- SCSS mirrors HTML structure
+- dist must NOT be edited
+
+---
+
+## 6. Editing Existing Pages
+
+If page already exists:
+
+- DO NOT keep previous visual style
+- DO full visual rework if it doesn't match design
+- reuse files only if structure is correct
+- rewrite SCSS aggressively if needed
+
+---
+
+## 7. Multi-file Changes
+
+ALL multi-file operations MUST be done via agent execution.
+
+NO manual step-by-step editing.
+
+---
+
+## 8. Output Requirements
+
+After any task:
+
+- list created files
+- list modified files
+- confirm build status
+
+---
+
+## 9. Quality Check (CRITICAL)
+
+Before finishing, ensure:
+
+- visual match with design is HIGH
+- no starter-style leftovers
+- no broken layout
+- no duplicated sections
+- clean structure
+
+If mismatch → rework before finishing
+
+# Pixel Perfect Mode
+
+When working with design-based frontend tasks:
+
+## Mandatory workflow
+1. Analyze full design
+2. Split into sections
+3. Implement ONE section
+4. Run preview
+5. STOP
+
+## Strict rules
+- No approximation
+- No visual interpretation
+- No simplification
+- No placeholders instead of real assets
+- No multi-block generation
+- No silent changes to approved sections
+
+## Execution behavior
+After each section:
+- report changes
+- confirm build status
+- stop execution
+
+## Continuation
+Only continue after explicit command:
+- continue
+- approved
+
+## Correction mode
+If user says "fix":
+- fix only the current section
+- do not rewrite everything
+- do not touch other sections
