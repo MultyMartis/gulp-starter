@@ -4,9 +4,10 @@ export function initModal() {
 
     const openModal = (id) => {
         const modal = document.getElementById(id);
-        if (!modal) {
-            return;
-        }
+        if (!modal) return;
+
+        if (modal.getAttribute('aria-hidden') === 'false') return;
+
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
