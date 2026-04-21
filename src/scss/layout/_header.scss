@@ -1,0 +1,34 @@
+.site-header {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.site-header__logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.site-header__menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+@media (max-width: 767px) {
+    .site-header__row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-header__menu {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}
