@@ -1,6 +1,7 @@
 # Gulp Starter
 
-Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-file-include`.
+Production-ready starter template for static HTML, SCSS, and JavaScript using `gulp-file-include`.
+Built for multipage static sites, landing pages, and internal pages without CMS, PHP, or database.
 
 ## Structure
 
@@ -8,7 +9,9 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 - `src/partials/sections` - large page blocks
 - `src/partials/components` - reusable UI parts
 - `src/scss` - styles organized as `base`, `utils`, `layout`, `sections`, `components`
-- `src/js/main.js` - all frontend logic entry point
+- `src/js/main.js` - initialization entry point
+- `src/js/modules` - feature/component and plugin logic (when required)
+- `src/js/utils` - shared helpers only when needed
 - `dist` - generated output
 
 ## Commands
@@ -16,6 +19,29 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 - `npm install`
 - `npm run build`
 - `npm run watch`
+
+## Starter scope
+
+- static HTML workflow only
+- no CMS logic
+- no PHP templates/routing
+- no database/backend dependencies
+- generic reusable template content (not a real client website by default)
+
+## Frontend library integration
+
+When a task requires Swiper, Fancybox, Inputmask, or similar plugins:
+
+- add a plugin only when it is actually needed
+- keep plugin markup valid according to plugin requirements
+- keep plugin logic in `src/js/modules`
+- initialize plugins from `src/js/main.js`
+- avoid inline scripts and plugin logic in HTML
+- use stable data-* attributes as primary JS hooks where practical
+- keep styling classes separate from JS behavior hooks
+- keep integration minimal and architecture-safe
+
+Examples of stable hooks: `data-modal`, `data-modal-open`, `data-modal-close`, `data-slider`, `data-fancybox`, `data-mask="phone"`.
 
 ## Rules
 
@@ -32,6 +58,7 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 - JS rule: `src/js/main.js` is initialization/bootstrapping only
 - JS rule: `src/js/modules` contains component or block logic
 - JS rule: `src/js/utils` is optional and used only for shared helpers
+- JS hook rule: prefer data-* selectors over presentational class selectors for behavior
 - script order rule: when module scripts are included before `main.js`, load order matters
 - SEO rule: only one `h1` per page
 - SEO rule: keep heading hierarchy `h1` → `h2` → `h3`

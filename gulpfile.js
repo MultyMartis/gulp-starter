@@ -117,7 +117,7 @@ function scripts() {
   return src(paths.scripts.src, { sourcemaps: true, allowEmpty: true })
     .pipe(onError('JS'))
     .pipe(dest(paths.scripts.dest))
-    .pipe(terser())
+    .pipe(terser({ module: true }))
     .pipe(rename({ suffix: '.min' }))
     .pipe(dest(paths.scripts.dest));
 }

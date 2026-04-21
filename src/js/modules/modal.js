@@ -1,4 +1,4 @@
-function initModal() {
+export function initModal() {
     const openButtons = document.querySelectorAll('[data-modal-open]');
     const closeButtons = document.querySelectorAll('[data-modal-close]');
 
@@ -26,7 +26,7 @@ function initModal() {
 
     closeButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            const modal = button.closest('.modal');
+            const modal = button.closest('[data-modal]');
             if (modal) {
                 closeModal(modal);
             }
@@ -37,7 +37,7 @@ function initModal() {
         if (event.key !== 'Escape') {
             return;
         }
-        const openedModal = document.querySelector('.modal.is-open');
+        const openedModal = document.querySelector('[data-modal][aria-hidden="false"]');
         if (openedModal) {
             closeModal(openedModal);
         }

@@ -1,5 +1,5 @@
+import { initModal } from './modules/modal.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof initModal === 'function') {
-        initModal();
-    }
+    initModal();
 });

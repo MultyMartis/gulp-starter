@@ -1,0 +1,195 @@
+You are working inside the main gulp-starter template project.
+Treat this repository as a reusable starter, not as a client website.
+This starter targets static HTML projects only: multipage sites, landing pages, and internal pages without CMS, PHP, or database.
+
+## Core Architecture (Fixed)
+Keep this structure unchanged unless explicitly requested:
+- src/pages — only final ready-to-build pages
+- src/partials/layout — layout files only
+- src/partials/sections — large page sections
+- src/partials/components — small reusable UI parts
+- src/scss mirrors HTML structure
+- src/scss/base — reset, base, typography
+- src/scss/utils — vars, mixins, functions
+- src/scss/layout — layout styles
+- src/scss/sections — section styles
+- src/scss/components — component styles
+- src/js/main.js — initialization only
+- src/js/modules — feature/component logic only when needed
+- src/js/utils — generic helpers only when needed
+- src/img — raster images
+- src/svg — svg files and sprite sources
+- src/fonts — fonts
+- src/favicon — favicon source files
+- dist is build output and must never be edited manually
+
+## Mandatory Restrictions
+- Never edit dist
+- Never restructure folders
+- Never move files between architecture layers unless explicitly requested
+- Never create unnecessary files
+- Never modify unrelated files
+- Never generate real client pages in this starter unless explicitly requested
+- Keep starter content generic and reusable
+- Never add CMS logic
+- Never add PHP templates or PHP routing
+- Never add backend/database assumptions
+
+## Starter Template vs Real Project
+Inside gulp-starter template:
+- Do not create business-specific service pages by default
+- Do not inject fake SEO-heavy client text
+- Do not turn starter pages into a real company website
+- Keep examples suitable for static HTML only
+
+Inside a copied real project:
+- Real business pages/content are allowed
+- SEO/service/landing pages are allowed when requested
+- Client-specific adaptation is allowed
+
+## Cursor/Codex Workflow Principle
+All multi-file operations must be executed via Cursor/Codex agent prompts, not manual step-by-step editing by default.
+
+Default execution order:
+1. Understand task scope
+2. Apply required edits directly
+3. Report created and modified files
+4. Run npm run build
+5. Fix errors if possible
+6. Return final status only
+
+## Pages Rules
+- Keep only build-ready pages in src/pages
+- One page must contain one clear H1
+- Use semantic HTML and practical structure
+- Avoid meaningless wrappers and placeholder fluff
+- Keep starter pages neutral and reusable
+
+## Layout Rules
+- Put shared document/head/header/footer/scripts logic only in src/partials/layout
+- Keep head logic reusable across pages
+- Do not duplicate layout markup in each page when include can be reused
+
+## Sections Rules
+- Put large reusable page blocks in src/partials/sections
+- Keep sections generic unless task explicitly requires page-specific content
+- If new section styles are needed, place them in src/scss/sections and connect via src/scss/style.scss
+
+## Components Rules
+- Put small reusable UI elements in src/partials/components
+- Keep components isolated and reusable
+- If new component styles are needed, place them in src/scss/components and connect via src/scss/style.scss
+
+## SCSS Layer Rules
+- Respect layer boundaries: base / utils / layout / sections / components
+- Do not place section styles inside component files (or vice versa)
+- Do not duplicate imports
+- Keep import order stable
+- Prefer scoped, production-safe styles
+
+## JS Structure Rules
+- Use JS only when needed
+- Keep initialization in src/js/main.js
+- Put feature/component logic in src/js/modules
+- Put generic helpers in src/js/utils
+- Avoid large feature logic in main.js
+- Do not add JS for purely static markup
+- Keep module bootstrapping reusable for future plugin initialization
+
+## Naming Rules
+- Use lowercase and kebab-case for files, classes, sections, and components
+- Use clear descriptive names
+- Avoid vague names (e.g. block, temp, test, new-section, item2)
+
+## Include Rules (gulp-file-include)
+- Use valid gulp-file-include syntax only
+- Keep include paths correct and architecture-aligned
+- Include parameters must be valid JSON
+- Keep JSON params one-line where required by project style
+- Prefer extending existing reusable includes over duplicating logic
+
+## Frontend Library Integration Rules
+For Swiper, Fancybox, Inputmask, and similar plugins:
+- Add integration only when task actually requires it
+- Check whether plugin is already connected before adding
+- Keep integration minimal and production-safe
+- Initialize plugins in src/js/modules
+- Wire module initialization from src/js/main.js
+- Do not use inline scripts
+- Do not put plugin logic inside HTML files
+- Use stable selectors (class/data-attribute)
+- Follow required plugin markup structure
+- Do not break existing modules
+- Do not add unnecessary libraries that are not required by the task
+- Keep integration compatible with static pages and existing architecture
+
+### Swiper
+- Use only for real slider/carousel requirements
+- Build valid Swiper markup
+- Add pagination/navigation only if task requires
+- Keep options minimal and explicit
+
+### Fancybox
+- Use only for modal/lightbox requirements
+- Use valid Fancybox trigger attributes/markup
+- Keep setup lightweight
+
+### Inputmask
+- Use only for inputs that need masking
+- Apply masks via JS, not inline
+- Preserve normal typing and paste behavior
+
+## Head, Meta, Social, Favicon Rules
+Base head for production-ready static pages should support:
+- charset
+- viewport
+- title
+- meta description
+- robots when relevant
+- theme-color only when relevant
+- favicon links
+- Open Graph: og:title, og:description, og:type, og:url, og:image when relevant
+- Twitter/social: twitter:card, twitter:title, twitter:description, twitter:image when relevant
+
+Restrictions:
+- No fake verification tags
+- No fake production URLs/images unless explicitly requested placeholders
+- Keep meta setup practical, minimal, and reusable
+
+Favicon:
+- Store source files in src/favicon
+- Do not reference nonexistent favicon files
+- Keep favicon setup consistent with existing build pipeline
+
+## Build Validation Workflow (Required)
+After making changes:
+1. Output short report:
+   - created files
+   - modified files
+2. Run npm run build
+3. If build fails, fix errors when possible
+4. Final output must be only one of:
+   - Build succeeded
+   - short list of remaining errors
+
+## JS Hook Rules
+- Prefer data-* attributes for JS hooks and initialization
+- Do not use presentational CSS classes as the primary JS selector when data-* is more appropriate
+- Keep styling classes and JS hooks separated
+- Use data-* for JS targets, triggers, and lightweight config whenever practical
+- Keep selectors resilient to markup/CSS restyling
+- No inline event handlers or inline scripts
+- Use stable patterns such as:
+  - data-modal
+  - data-modal-open
+  - data-modal-close
+  - data-tabs
+  - data-tab
+  - data-tab-panel
+  - data-accordion
+  - data-accordion-button
+  - data-accordion-panel
+  - data-slider
+  - data-fancybox
+  - data-mask="phone"
+- JS must remain resilient to HTML/CSS restyling
