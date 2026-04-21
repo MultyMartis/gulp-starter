@@ -19,7 +19,7 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 
 ## Rules
 
-- edit only `src` (and safe root files like `README.md`, `package.json`, `gulpfile.js`)
+- edit only `src`
 - `dist` is generated; do not edit `dist` manually
 - `src/pages` contains only final pages; no partials, no sections, and no blocks
 - naming convention: lowercase only
@@ -29,9 +29,10 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 - layout contains only structural parts: `head`, `header`, `footer`, `scripts`
 - sections are large page blocks (for example: `hero`, `contacts`)
 - components are reusable small elements (for example: `button`, `modal`, `breadcrumb`)
-- JS rule: `main.js` is initialization/bootstrapping only
-- JS rule: `src/js/modules` contains component logic
-- JS rule: `src/js/utils` contains helper functions
+- JS rule: `src/js/main.js` is initialization/bootstrapping only
+- JS rule: `src/js/modules` contains component or block logic
+- JS rule: `src/js/utils` is optional and used only for shared helpers
+- script order rule: when module scripts are included before `main.js`, load order matters
 - SEO rule: only one `h1` per page
 - SEO rule: keep heading hierarchy `h1` → `h2` → `h3`
 - SEO rule: use semantic tags (`header`, `main`, `section`, `nav`, `footer`)
