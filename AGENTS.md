@@ -614,3 +614,22 @@ That means:
 - Do **not** skip design analysis or `docs/ai-workflow/` documentation before code.
 - Do **not** skip approval checkpoints (stop after each block; wait for **approved** / **continue** / **fix this block**).
 - Do **not** pad responses with generic explanatory filler; report what changed, build/preview status, and what is blocked on user input.
+
+## Real Project Transition Rule
+
+This repository is the canonical **gulp starter template**. It is **not** a client project: no real brand, no production site content, and no client-specific design implementation should live here by default.
+
+**Where real work happens**
+
+- Client or production work is done in a **separate copy** of this starter (a new repo or folder created from the template).
+- After copy, the same architecture applies, but **business pages, real copy, SEO targets, and design-to-HTML work** are expected only in that copied project, when explicitly requested.
+
+**Pixel-perfect workflow in copies**
+
+- In a **copied real project**, the pixel-perfect, design-first, block-by-block, and approval rules in this file (and in `.cursorrules`) are the **active** standard for any design-based implementation.
+- In **gulp-starter itself**, keep examples generic; do not turn template pages into a live client site.
+
+**Design files**
+
+- Real design exports (Figma/PNG/PDF, assets, notes) belong in the **new project’s** `src/assets/design/` (per-page folders as documented in the design folder README).
+- Do not commit or add real client design deliverables to the canonical starter unless the maintainer explicitly chooses to use this repo for that purpose.
