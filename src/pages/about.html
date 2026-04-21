@@ -3,9 +3,8 @@
     @@include("partials/layout/header.html")
 
     <main>
-        @@include("partials/components/breadcrumb.html")
-
-        @@include("partials/sections/hero.html", {"title": "About this starter", "text": "Simple structure with pages, partials, sections, components, SCSS modules and basic JS.", "buttonText": "Contact Us", "buttonTarget": "demo-modal"})
+        @@include("partials/components/breadcrumb.html", {"current": "About"})
+        @@include("partials/sections/page-intro.html", {"title": "About this starter", "text": "This starter keeps structure clean for static layout, WordPress themes, and OpenCart templates."})
 
         @@include("partials/sections/advantages.html")
         @@include("partials/sections/contacts.html")

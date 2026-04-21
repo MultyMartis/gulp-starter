@@ -3,9 +3,8 @@
     @@include("partials/layout/header.html")
 
     <main>
-        @@include("partials/components/breadcrumb.html")
-
-        @@include("partials/sections/hero.html", {"title": "Services", "text": "Starter-friendly section blocks you can quickly adapt for client projects.", "buttonText": "Request Service", "buttonTarget": "demo-modal"})
+        @@include("partials/components/breadcrumb.html", {"current": "Service"})
+        @@include("partials/sections/page-intro.html", {"title": "Services", "text": "Starter-friendly page pattern for regular internal pages with clean semantic content."})
 
         @@include("partials/sections/advantages.html")
         @@include("partials/sections/contacts.html")

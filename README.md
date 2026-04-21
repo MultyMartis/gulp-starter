@@ -30,7 +30,14 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 - sections are large page blocks (for example: `hero`, `contacts`)
 - components are reusable small elements (for example: `button`, `modal`, `breadcrumb`)
 - JS rule: `main.js` is initialization/bootstrapping only
-- JS rule: `modules` contains component logic
-- JS rule: `utils` contains helper functions
-- page template standard: `head` → `header` → `main` (sections) → `footer` → `scripts`
+- JS rule: `src/js/modules` contains component logic
+- JS rule: `src/js/utils` contains helper functions
+- SEO rule: only one `h1` per page
+- SEO rule: keep heading hierarchy `h1` → `h2` → `h3`
+- SEO rule: use semantic tags (`header`, `main`, `section`, `nav`, `footer`)
+- SEO rule: breadcrumbs are required before main page section on internal pages
+- SEO rule: page title in `head` must match page meaning
+- homepage/special pattern (pattern A): `head` → `header` → `hero` → content sections → `footer` → `scripts`
+- internal page pattern (pattern B): `head` → `header` → `breadcrumb` → `page-intro` (main section with `h1` + intro text) → optional supporting sections → `footer` → `scripts`
+- hero rule: use `hero` only on homepage or landing-style pages
 - keep existing project structure; do not change architecture
