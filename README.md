@@ -21,8 +21,16 @@ Production-ready starter template for HTML, SCSS, and JavaScript using `gulp-fil
 
 - edit only `src` (and safe root files like `README.md`, `package.json`, `gulpfile.js`)
 - `dist` is generated; do not edit `dist` manually
-- pages live in `src/pages`
-- sections are large content blocks in `src/partials/sections`
-- components are reusable parts in `src/partials/components`
-- SCSS mirrors HTML structure (`layout`, `sections`, `components`)
+- `src/pages` contains only final pages; no partials, no sections, and no blocks
+- naming convention: lowercase only
+- naming convention: kebab-case only
+- HTML and SCSS names must match (example: `hero.html` ↔ `_hero.scss`)
+- avoid random names like `section1`, `new-block`, `final-block`
+- layout contains only structural parts: `head`, `header`, `footer`, `scripts`
+- sections are large page blocks (for example: `hero`, `contacts`)
+- components are reusable small elements (for example: `button`, `modal`, `breadcrumb`)
+- JS rule: `main.js` is initialization/bootstrapping only
+- JS rule: `modules` contains component logic
+- JS rule: `utils` contains helper functions
+- page template standard: `head` → `header` → `main` (sections) → `footer` → `scripts`
 - keep existing project structure; do not change architecture
