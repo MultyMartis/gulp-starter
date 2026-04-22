@@ -60,6 +60,11 @@ const paths = {
     watch: 'src/favicon/**/*.*',
     dest: 'dist/assets/favicon/',
   },
+  designBarel: {
+    src: 'src/assets/design/barel/**/*',
+    watch: 'src/assets/design/barel/**/*',
+    dest: 'dist/assets/design/barel/',
+  },
   svg: {
     src: 'src/svg/**/*.svg',
     watch: 'src/svg/**/*.svg',
@@ -140,6 +145,12 @@ function favicon() {
     .pipe(dest(paths.favicon.dest));
 }
 
+function designBarel() {
+  return src(paths.designBarel.src, { buffer: true, encoding: false, allowEmpty: true })
+    .pipe(onError('DESIGN BAREL'))
+    .pipe(dest(paths.designBarel.dest));
+}
+
 function sprite() {
   return src(paths.svg.src, { allowEmpty: true })
     .pipe(onError('SVG SPRITE'))
@@ -166,7 +177,7 @@ function sprite() {
 
 const build = series(
   cleanDist,
-  parallel(html, styles, vendorCss, scripts, images, fonts, favicon),
+  parallel(html, styles, vendorCss, scripts, images, fonts, favicon, designBarel),
   sprite
 );
 
@@ -178,6 +189,7 @@ function watcher() {
   watch(paths.images.watch, images);
   watch(paths.fonts.watch, fonts);
   watch(paths.favicon.watch, favicon);
+  watch(paths.designBarel.watch, designBarel);
   watch(paths.svg.watch, sprite);
 }
 

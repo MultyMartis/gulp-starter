@@ -1,0 +1,130 @@
+.sizes {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e4df;
+}
+
+.sizes__container {
+    width: 100%;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding-top: 56px;
+    padding-bottom: 56px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.sizes__title {
+    margin: 0 0 24px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #1a1a1a;
+}
+
+.sizes__table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #ede8e2;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.sizes__table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #2b2b2b;
+}
+
+.sizes__head .sizes__cell {
+    padding: 13px 14px;
+    font-weight: 700;
+    text-align: left;
+    vertical-align: middle;
+    color: #1a1a1a;
+    background-color: #f4ede5;
+    border-bottom: 1px solid #e8e4df;
+}
+
+.sizes__head .sizes__row .sizes__cell:first-child {
+    border-top-left-radius: 7px;
+}
+
+.sizes__head .sizes__row .sizes__cell:last-child {
+    border-top-right-radius: 7px;
+}
+
+.sizes__body .sizes__cell {
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ede8e2;
+}
+
+.sizes__body .sizes__row:last-child .sizes__cell {
+    border-bottom: none;
+}
+
+.sizes__note {
+    margin: 18px 0 0;
+    max-width: 48em;
+    font-size: 13px;
+    line-height: 1.45;
+    font-style: italic;
+    color: #6b6b6b;
+}
+
+@media (min-width: 1025px) {
+    .sizes {
+        border-bottom-color: #e5e5e5;
+    }
+
+    .sizes__container {
+        padding-top: 88px;
+        padding-bottom: 88px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .sizes__title {
+        margin-bottom: 36px;
+        font-size: 36px;
+    }
+
+    .sizes__table-wrap {
+        border-radius: 10px;
+    }
+
+    .sizes__table {
+        min-width: 0;
+        font-size: 15px;
+    }
+
+    .sizes__head .sizes__cell {
+        padding: 16px 18px;
+    }
+
+    .sizes__head .sizes__row .sizes__cell:first-child {
+        border-top-left-radius: 9px;
+    }
+
+    .sizes__head .sizes__row .sizes__cell:last-child {
+        border-top-right-radius: 9px;
+    }
+
+    .sizes__body .sizes__cell {
+        padding: 14px 18px;
+    }
+
+    .sizes__note {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+}

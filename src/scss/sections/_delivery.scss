@@ -1,0 +1,118 @@
+.delivery {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e4df;
+}
+
+.delivery__container {
+    width: 100%;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding-top: 56px;
+    padding-bottom: 56px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.delivery__title {
+    margin: 0 0 28px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #1a1a1a;
+}
+
+.delivery__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+}
+
+.delivery-card {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 420px;
+    text-align: center;
+}
+
+.delivery-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 18px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.delivery-card__icon svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+.delivery-card__title {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1a1a1a;
+}
+
+.delivery-card__text {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: #5c5c5c;
+}
+
+@media (min-width: 1025px) {
+    .delivery {
+        border-bottom-color: #e5e5e5;
+    }
+
+    .delivery__container {
+        padding-top: 88px;
+        padding-bottom: 88px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .delivery__title {
+        margin-bottom: 40px;
+        font-size: 36px;
+    }
+
+    .delivery__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px 36px;
+        align-items: start;
+    }
+
+    .delivery-card {
+        max-width: none;
+        margin: 0;
+        padding: 0 8px;
+    }
+
+    .delivery-card__icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 20px;
+        border-radius: 11px;
+    }
+
+    .delivery-card__title {
+        margin-bottom: 12px;
+        font-size: 18px;
+    }
+
+    .delivery-card__text {
+        font-size: 15px;
+    }
+}

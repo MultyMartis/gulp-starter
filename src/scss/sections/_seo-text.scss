@@ -1,0 +1,65 @@
+.seo-text {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e4df;
+}
+
+.seo-text__container {
+    width: 100%;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.seo-text__title {
+    margin: 0 0 24px;
+    max-width: 920px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #1a1a1a;
+}
+
+.seo-text__content {
+    max-width: 920px;
+}
+
+.seo-text__paragraph {
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #5c5c5c;
+}
+
+.seo-text__paragraph:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 1025px) {
+    .seo-text {
+        border-bottom-color: #e5e5e5;
+    }
+
+    .seo-text__container {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .seo-text__title {
+        margin-bottom: 32px;
+        font-size: 36px;
+    }
+
+    .seo-text__paragraph {
+        margin-bottom: 18px;
+        font-size: 16px;
+        line-height: 1.55;
+    }
+}

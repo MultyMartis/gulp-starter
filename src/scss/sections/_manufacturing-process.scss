@@ -1,0 +1,428 @@
+.manufacturing {
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #e8e4df;
+
+}
+
+
+
+.manufacturing__container {
+
+    padding-top: 56px;
+
+    padding-bottom: 56px;
+
+}
+
+
+
+.manufacturing__intro {
+
+    margin-bottom: 32px;
+
+    max-width: 920px;
+
+}
+
+
+
+.manufacturing__title {
+
+    margin: 0 0 12px;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.02em;
+
+    text-align: left;
+
+    color: #1a1a1a;
+
+}
+
+
+
+.manufacturing__lead {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+
+    color: #6b6b6b;
+
+}
+
+
+
+.manufacturing__lead--desktop {
+
+    display: none;
+
+}
+
+
+
+.manufacturing__lead--mobile {
+
+    display: block;
+
+    text-align: left;
+
+}
+
+
+
+.manufacturing__grid {
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+
+
+.manufacturing__grid--desktop {
+
+    display: none;
+
+}
+
+
+
+.manufacturing__grid--mobile {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 36px;
+
+}
+
+
+
+.manufacturing-card__inner {
+
+    margin: 0;
+
+}
+
+
+
+.manufacturing-card__visual {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background-color: #ebe8e4;
+
+}
+
+
+
+.manufacturing-card__visual--mobile {
+
+    margin-bottom: 14px;
+
+}
+
+
+
+.manufacturing-card__img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    vertical-align: middle;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+}
+
+
+
+.manufacturing-card__overlay {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    padding: 20px 16px 16px;
+
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.72) 0%, rgba(17, 17, 17, 0.35) 55%, transparent 100%);
+
+}
+
+
+
+.manufacturing-card__name {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    color: #ffffff;
+
+}
+
+
+
+.manufacturing-card__index {
+
+    display: inline-block;
+
+    margin-right: 8px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    font-variant-numeric: tabular-nums;
+
+    color: #ff7a00;
+
+}
+
+
+
+.manufacturing-card__text {
+
+    margin: 14px 0 0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #555555;
+
+}
+
+
+
+.manufacturing-card__title-mobile {
+
+    margin: 0 0 10px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    color: #1a1a1a;
+
+}
+
+
+
+.manufacturing-card__title-num {
+
+    display: inline-block;
+
+    margin-right: 8px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    font-variant-numeric: tabular-nums;
+
+    color: #ff7a00;
+
+}
+
+
+
+.manufacturing-card__text--mobile {
+
+    margin: 0;
+
+}
+
+
+
+@media (min-width: 580px) and (max-width: 1024px) {
+
+    .manufacturing__grid--mobile {
+
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 32px 24px;
+
+    }
+
+}
+
+
+
+@media (min-width: 1025px) {
+
+    .manufacturing {
+
+        border-bottom-color: #e5e5e5;
+
+    }
+
+
+
+    .manufacturing__container {
+
+        padding-top: 88px;
+
+        padding-bottom: 88px;
+
+        padding-left: 50px;
+
+        padding-right: 50px;
+
+    }
+
+
+
+    .manufacturing__intro {
+
+        margin: 0 auto 48px;
+
+        max-width: 920px;
+
+        text-align: center;
+
+    }
+
+
+
+    .manufacturing__title {
+
+        margin-bottom: 14px;
+
+        font-size: 36px;
+
+        text-align: center;
+
+    }
+
+
+
+    .manufacturing__lead--mobile {
+
+        display: none;
+
+    }
+
+
+
+    .manufacturing__lead--desktop {
+
+        display: block;
+
+        text-align: center;
+
+        font-size: 16px;
+
+        line-height: 1.55;
+
+        color: #6b6b6b;
+
+    }
+
+
+
+    .manufacturing__grid--mobile {
+
+        display: none;
+
+    }
+
+
+
+    .manufacturing__grid--desktop {
+
+        display: grid;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 28px 24px;
+
+    }
+
+
+
+    .manufacturing-card__visual {
+
+        border-radius: 18px;
+
+    }
+
+
+
+    .manufacturing-card__overlay {
+
+        padding: 24px 18px 18px;
+
+    }
+
+
+
+    .manufacturing-card__index {
+
+        margin-right: 10px;
+
+        font-size: 15px;
+
+    }
+
+
+
+    .manufacturing-card__name {
+
+        font-size: 17px;
+
+    }
+
+
+
+    .manufacturing-card__text {
+
+        margin-top: 16px;
+
+        font-size: 15px;
+
+        line-height: 1.65;
+
+        color: #555555;
+
+    }
+
+}
+
