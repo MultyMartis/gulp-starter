@@ -1,6 +1,7 @@
 # Gulp Starter
 
-Production-ready starter template for static HTML, SCSS, and JavaScript using `gulp-file-include`.
+**Universal starter template** — production-ready base for static HTML, SCSS, and JavaScript using `gulp-file-include`. It is meant to be copied into new repos for real sites; **this repository** keeps generic architecture and reusable demo content, not a shipped client production site by default.
+
 Built for multipage static sites, landing pages, and internal pages without CMS, PHP, or database.
 
 ## Structure
@@ -27,6 +28,8 @@ Built for multipage static sites, landing pages, and internal pages without CMS,
 - no PHP templates/routing
 - no database/backend dependencies
 - generic reusable template content (not a real client website by default)
+- **critical UI** should avoid fragile chains of dynamic `import()` that can fail silently; prefer a load path you can verify in the build you actually use
+- **classic script tags** and **`window` globals** (e.g. plugin UMD builds) are acceptable when reliability or build constraints require the simplest dependency path
 
 ## Frontend library integration
 
@@ -42,6 +45,30 @@ When a task requires Swiper, Fancybox, Inputmask, or similar plugins:
 - keep integration minimal and architecture-safe
 
 Examples of stable hooks: `data-modal`, `data-modal-open`, `data-modal-close`, `data-slider`, `data-fancybox`, `data-mask="phone"`.
+
+### Swiper vs Fancybox
+
+- **Swiper** → carousel/slider behavior and in-slider navigation only.
+- **Fancybox** → lightbox / enlarged image (or media) opening only.
+- Avoid extra “glue” scripts unless a real conflict is proven.
+- Do not combine Swiper-driven sliding with manual `scrollBy` in the same gallery block.
+
+### Progressive enhancement and robust UI (summary)
+
+Full detail lives in **`AGENTS.md`** (sections on progressive enhancement, gallery rules, FAQ accordion, interaction styling, debug order). In short:
+
+- Ship a **usable HTML/CSS baseline** before JS enhancements; do not hide essential content behind JS-only failure points.
+- **Motion:** support `prefers-reduced-motion`; prefer transform/opacity for light motion.
+- **Accordions (e.g. FAQ):** one open item per group by default; toggle closed on second click; accessible button with `aria-expanded` and `aria-controls` (stable ids linking control to panel).
+- **CSS interaction:** unify hover and `:focus-visible`; avoid `transition: all` and hover-driven layout shift; scope rules to blocks.
+- **When interactions break:** verify script execution → globals → selectors → block scope → CSS blocking clicks — then logic.
+
+### Anti-patterns (quick reference)
+
+- Do **not** mix **Swiper** and **manual `scrollBy`** (or other scroll hacks) in one gallery block — pick one interaction owner.
+- Do **not** patch blindly before checking the **real execution path** (loaded → init ran → selectors match DOM).
+- Do **not** let **async / module / dynamic-import chains** silently break **critical** UI — simplify the path or make failures visible in development.
+- Do **not** rewrite stable markup before checking **init, selectors, and CSS** (including hit targets and stacking).
 
 ## Rules
 
@@ -69,3 +96,4 @@ Examples of stable hooks: `data-modal`, `data-modal-open`, `data-modal-close`, `
 - internal page pattern (pattern B): `head` → `header` → `breadcrumb` → `page-intro` (main section with `h1` + intro text) → optional supporting sections → `footer` → `scripts`
 - hero rule: use `hero` only on homepage or landing-style pages
 - keep existing project structure; do not change architecture
+- progressive enhancement, gallery boundaries (Swiper vs Fancybox), accessibility/motion, and interaction debug order: **`AGENTS.md`** (single source of truth)

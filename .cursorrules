@@ -2,12 +2,12 @@ You are working in a **gulp-starter–based static HTML** project (multipage sit
 
 **Repository kinds:**
 
-1. **Canonical gulp-starter template** — upstream reusable template; generic demo content.
-2. **Copied real project** — client/product repo with real design files and real implementation.
+1. **Canonical gulp-starter template** — the upstream **universal starter** (this `gulp-starter` repo): reusable architecture, generic demo content, not a default home for real client production sites.
+2. **Client/product copy** — a separate repository or folder **created from the starter** for a specific delivery: real design files in `src/assets/design/`, business pages, and pixel-perfect implementation are normal there.
 
-**This repository is a copied real project.** Real design materials, business pages, and pixel-perfect implementation are expected here. Do not treat this repo as “template demo only.”
+**Default for this repository:** treat it as the **canonical template** unless the user explicitly states their workspace is a forked delivery repo. In the template, keep examples generic; real client sites and committed client design packs belong in **copies**, not as the default assumption for the starter repo itself.
 
-**Visual work:** Design execution rules (pixel-perfect sections below) **override** starter default visuals, generic spacing/colors, and reuse of demo components **when they conflict with the design source**.
+**Visual work:** In any repo where design sources drive implementation, design execution rules (pixel-perfect sections below) **override** starter default visuals, generic spacing/colors, and reuse of demo components **when they conflict with the design source**.
 
 ## Core Architecture (Fixed)
 Keep this structure unchanged unless explicitly requested:
@@ -36,13 +36,13 @@ Keep this structure unchanged unless explicitly requested:
 - Never move files between architecture layers unless explicitly requested
 - Never create unnecessary files
 - Never modify unrelated files
-- **Canonical template only:** never generate real client production pages unless explicitly requested; keep demo content generic.
-- **This copied real project:** real client pages and implementation are allowed when the task requests them.
+- **Canonical template (this repo):** never generate real client production pages unless explicitly requested; keep demo content generic.
+- **Client/product copy:** real client pages and implementation are allowed when the task requests them.
 - Never add CMS logic
 - Never add PHP templates or PHP routing
 - Never add backend/database assumptions
 
-## Starter Template vs Real Project
+## Starter template vs client/product copy
 **Canonical gulp-starter template:**
 
 - Do not create business-specific service pages by default
@@ -50,7 +50,7 @@ Keep this structure unchanged unless explicitly requested:
 - Do not turn template demo pages into a client website inside the template repo
 - Keep examples suitable for static HTML only
 
-**Copied real project (this repository):**
+**Client/product copy (typical delivery repo, not the canonical template by default):**
 
 - Real business pages/content are allowed and expected when tasks require them
 - SEO/service/landing pages are allowed when requested
@@ -105,6 +105,28 @@ Default execution order:
 - Avoid large feature logic in main.js
 - Do not add JS for purely static markup
 - Keep module bootstrapping reusable for future plugin initialization
+- Do **not** overengineer trivial UI blocks; verify **actual** execution path (loaded → init ran → selectors match DOM) before deep debugging or repeated patches.
+
+## Progressive enhancement and interaction safety (starter knowledge)
+- **Visible by default:** meaningful content works without JS; enhancements are additive.
+- Do **not** hide essential content behind JS-only toggles without a safe fallback.
+- **Motion:** respect `prefers-reduced-motion`; prefer transform/opacity for light animation; avoid animating layout-critical properties unless design requires.
+- **FAQ accordion pattern:** one open item per group (unless design says otherwise); click open header again to close; accessible button + `aria-expanded` + `aria-controls` (stable ids); minimal scoped JS.
+- **Interaction CSS:** align hover with `:focus-visible`; avoid `transition: all`; avoid hover/active layout shift; scope styles to block roots.
+
+## Interactive UI debug order
+1. Script runs (no uncaught errors).
+2. Dependencies on `window` exist when expected.
+3. Selectors match real DOM.
+4. Correct block root / scope.
+5. CSS not blocking clicks/layout.
+6. Then deeper logic.
+
+## Anti-patterns
+- Multiple competing interaction strategies in one block without a single clear owner.
+- Patching repeatedly without verifying load chain and DOM.
+- Critical UI depending on fragile async import graphs without fallback or error visibility.
+- Rewriting stable markup instead of fixing init/selectors/CSS.
 
 ## Naming Rules
 - Use lowercase and kebab-case for files, classes, sections, and components
@@ -143,6 +165,13 @@ For Swiper, Fancybox, Inputmask, and similar plugins:
 - Use only for modal/lightbox requirements
 - Use valid Fancybox trigger attributes/markup
 - Keep setup lightweight
+
+### Swiper + Fancybox separation (starter knowledge)
+- **Swiper**: sliding and in-carousel navigation only (swiper structure, arrows, pagination).
+- **Fancybox**: opening/lightboxing images (or grouped items) only.
+- Do **not** build custom bridge logic unless a **real** conflict is proven and documented.
+- In **one** gallery block, do **not** mix Swiper-controlled motion with manual `scrollBy`/scroll hacks for the same interaction.
+- For **critical** galleries: avoid unstable `import()` chains; classic script + `window.Swiper` / Fancybox globals may be more reliable in brittle environments — match what the project’s build actually supports.
 
 ### Inputmask
 - Use only for inputs that need masking
@@ -444,7 +473,7 @@ Only after analysis is approved:
 
 # Execution priority (design-based work)
 
-For **design-based frontend implementation** in a **copied real project**, priority is:
+For **design-based frontend implementation** in a **client/product repository created from this starter**, priority is:
 
 1. **Design source fidelity**
 2. **Approved workflow steps** (analysis → notes → one block → stop → approval)
@@ -457,7 +486,7 @@ For **design-based frontend implementation** in a **copied real project**, prior
 
 # Agent behavior mode (real design tasks)
 
-Behave as an **execution system**, not a generic advisor:
+Behave as an **execution system**, not a generic advisor (design-driven delivery work):
 
 - Do only the required phase; one block per implementation step after analysis.
 - Do not expand scope or suggest alternative directions unless the user asks.
